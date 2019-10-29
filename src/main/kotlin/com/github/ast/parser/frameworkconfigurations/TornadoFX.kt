@@ -143,9 +143,8 @@ fun KParserImpl.detectLambdaControls(
         val parentLevel = nodeLevel - 1
         if (parentLevel >= 0) {
             // find the parent node by index
-            mapClassViewNodes[className]?.findLastElementWithParentLevel(parentLevel)?.let {
-                mapClassViewNodes[className]?.addEdge(it, graphNode)
-            }
+            val parent = digraph.findLastElementWithParentLevel(parentLevel)
+            digraph.addEdge(parent, graphNode)
         }
 
         // TornadoFX specific
