@@ -35,13 +35,11 @@ class Dialog : Fragment() {
                                     val nodeLevel = bucket.level
                                     var viewNode = "$nodeLevel \t${bucket.nodeType}"
 
-                                    children.forEachIndexed { index, node ->
-                                        viewNode += if (index < children.size) {
-                                            " -> ${node.nodeType} "
-                                        } else "${node.nodeType}\n"
-                                    }
-                                    items.add(viewNode)
+                                viewNode += children.joinToString("") { node ->
+                                    " -> ${node.nodeType} "
                                 }
+
+                                items.add(viewNode)
                             }
                         }
                     }
